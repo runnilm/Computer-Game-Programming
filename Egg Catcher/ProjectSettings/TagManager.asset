@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Egg
+  - BrokenEgg
+  - Basket
+  - Bomb
+  - GoldenEgg
+  - Hen
+  - Terrain
+  - Anim
+  - Score
+  - Timer
+  - Lose
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 3297702371
+    locked: 0
+  - name: Anim
+    uniqueID: 1527718547
+    locked: 0
+  - name: Egg
+    uniqueID: 2773936425
+    locked: 0
+  - name: Actor
+    uniqueID: 1881912709
+    locked: 0
+  - name: UI
+    uniqueID: 3195172259
+    locked: 0
