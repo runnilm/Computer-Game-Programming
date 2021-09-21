@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4551241022969049268}
   - component: {fileID: 4551241022969049269}
   - component: {fileID: 6332269036963950109}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: brokenEgg
   m_TagString: BrokenEgg
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1521030871
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a74c6f2b82231fe44904243804bee359, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -96,4 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenEggPrefab: {fileID: 4551241022969049266}
-  scoreText: {fileID: 0}
+  bombColPrefab: {fileID: 2515485899135623016, guid: f7cf3b24119b1b64fad3f1530c675dc2, type: 3}
+  scorePrefab: {fileID: 6560929474210651140, guid: ee351e05ed3191e458143fda56d01d0e, type: 3}
+  score2Prefab: {fileID: 6560929474210651140, guid: 34f035dae8a83b6418754758302669f2, type: 3}
+  canvas: {fileID: 0}

@@ -15,7 +15,6 @@ public class ChickenMove : MonoBehaviour {
 
     private readonly float xStoppingPoint = 9.0f;
 
-    // Start is called before the first frame update
     void Start() {
         Vector2 chickenPos = transform.position;
 
@@ -36,7 +35,6 @@ public class ChickenMove : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void Update() {
         Vector2 chickenPos = transform.position;
 

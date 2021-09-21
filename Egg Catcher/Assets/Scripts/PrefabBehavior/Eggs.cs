@@ -8,10 +8,9 @@ public class Eggs : MonoBehaviour {
     public GameObject eggPrefab;
     public GameObject goldenEggPrefab;
 
-    // for reference eggs have a 90% chance
+    // for reference eggs have a 95% chance
     private readonly float goldenEggWeight = .05f; // (5% chance)
 
-    // Start is called before the first frame update
     void Start() {
         StartCoroutine( EggTimer() );
     }

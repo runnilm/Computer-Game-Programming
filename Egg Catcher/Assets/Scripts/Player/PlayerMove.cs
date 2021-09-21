@@ -5,17 +5,14 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour {
     public readonly static float speed = 10f;
 
-    private float normalSpeed;
+    public static Vector2 pos;
 
     public bool isExploded = false;
 
-    void Start() { }
-
-    // Update is called once per frame
     void Update() {
         float h = Input.GetAxisRaw("Horizontal");
 
-        Vector2 pos = transform.position;
+        pos = transform.position;
         Vector2 cameraPos = Camera.main.WorldToViewportPoint(transform.position);
 
         if (cameraPos.x <= 0.0) {

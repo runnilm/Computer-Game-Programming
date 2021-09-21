@@ -9,35 +9,27 @@ using TMPro;
 public class GameProcesses : MonoBehaviour {
     public readonly int framerate = 144;
 
-    private GameObject timerText;
+    private TextMeshProUGUI timerText;
     private float timer = 60.0f;
 
-    public TextMeshProUGUI gameOverText;
-    public TextMeshProUGUI youLoseText;
-    public TextMeshProUGUI restartText;
+    private TextMeshProUGUI gameOverText;
+    private TextMeshProUGUI youLoseText;
+    private TextMeshProUGUI restartText;
 
-    private readonly Color32 blankText  = new Color32(0,    0,      0,      0); // black alpha 0
-    private readonly Color32 fullText   = new Color32(255,  255,    255,    0); // white alpha 0
-
-    private GameObject player;
     private PlayerMove playerScript;
 
-
-    // Start is called before the first frame update
     void Start() {
-        timerText = GameObject.FindGameObjectWithTag("Timer");
+        timerText = GameObject.FindGameObjectWithTag("Timer").GetComponent<TextMeshProUGUI>();
 
         gameOverText = GameObject.Find("GameOver").GetComponent<TextMeshProUGUI>();
         youLoseText = GameObject.Find("YouLose").GetComponent<TextMeshProUGUI>();
         restartText = GameObject.Find("Restart").GetComponent<TextMeshProUGUI>();
 
-        player = GameObject.FindGameObjectWithTag("Basket");
-        playerScript = player.GetComponent<PlayerMove>();
+        playerScript = GameObject.Find("basket").GetComponent<PlayerMove>();
 
         Application.targetFrameRate = framerate;
     }
 
-    // Update is called once per frame
     void Update() {
         if (timer >= 0.0f) {
             timer -= Time.deltaTime;
@@ -63,6 +55,6 @@ public class GameProcesses : MonoBehaviour {
     }
 
     public void UpdateTimer(float newTime) {
-        timerText.GetComponent<Text>().text = "Time left: " + newTime.ToString("F1");
+        timerText.text = "Time left: " + newTime.ToString("F1");
     }
 }

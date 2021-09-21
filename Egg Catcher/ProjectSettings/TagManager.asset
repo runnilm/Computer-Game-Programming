@@ -15,6 +15,8 @@ TagManager:
   - Score
   - Timer
   - Lose
+  - Sky
+  - Music
   layers:
   - Default
   - TransparentFX
@@ -22,6 +24,10 @@ TagManager:
   - 
   - Water
   - UI
+  - Terrain
+  - Eggs
+  - Actors
+  - Bombs
   - 
   - 
   - 
@@ -43,14 +49,13 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - UI+
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sky
+    uniqueID: 636607689
     locked: 0
   - name: BG
     uniqueID: 3297702371
@@ -66,4 +71,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3195172259
+    locked: 0
+  - name: UI+
+    uniqueID: 203034611
     locked: 0
