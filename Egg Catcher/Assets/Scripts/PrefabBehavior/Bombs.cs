@@ -7,6 +7,9 @@ public class Bombs : MonoBehaviour {
     private GameObject bomb;
 
     private int maxSpawnAttempts = 100;
+    // this was from before i found out about the layer collision matrix in the project settings,
+    // so i'm not sure this actually does anything on its own without the layer collision matrix
+    // settings, but it works like i wanted it to
     private static int layerId = 9;
     private int layerMask = 1 << layerId;
 
@@ -25,28 +28,36 @@ public class Bombs : MonoBehaviour {
     }
 
     private void Update() {
-        // this occurs 5 times while game is played
+        // this occurs 5 times while game is played (every 10 seconds over 60 seconds)
         if (startTime < 10.0f) {
             startTime += Time.deltaTime;
+        // every 10 seconds, decrease the minimum AND maximum spawn times between bombs
+        // this increases difficulty as the game goes later
         } else if (startTime >= 10.0f) {
             minSpawnTime -= 0.2f;
             maxSpawnTime -= 0.5f;
-            Debug.Log("shake");
+            // shake the screen slightly to indicate when game is getting slightly more difficult
             shake.CamShake();
+            // start counting again
             startTime = 0.0f;
         }
     }
 
     void SpawnBomb() {
+        // chooses random x position to spawn bomb
         randX = Random.Range(-maxXVal, maxXVal);
 
+        // bombs always spawn offscreen at 6.0f
         bombPos.y = 6.0f;
         bombPos.x = randX;
 
         // attempts to spawn bomb away from other bombs 'maxSpawnAttempts' times
         for (int i = 0; i <= maxSpawnAttempts; i++) {
+            // if there are no other bombs in a 1f radius from the current randomly chosen bomb position
             if (Physics2D.OverlapCircle(bombPos, 1f, layerMask) == null) {
+                // spawns instance of bomb prefab as a gameobject
                 bomb = Instantiate(bombPrefab) as GameObject;
+                // at chosen location
                 bomb.transform.position = bombPos;
                 return;
             }
@@ -56,7 +67,9 @@ public class Bombs : MonoBehaviour {
         bomb.transform.position = bombPos;
     }
 
+    // spawning a cluster of bombs
     void SpawnCluster() {
+        // number of bombs is between 2 and 4 exclusively
         int randNum = Random.Range(2, 4);
 
         for (int i = 0; i <= randNum; i++) {
@@ -64,8 +77,11 @@ public class Bombs : MonoBehaviour {
         }
     }
 
+    // every amount of time x (determined by the random.range), it spawns a bomb -
+    // with a <10% chance to spawn a "cluster" of bombs as well
     IEnumerator BombTimer() {
         while (true) {
+            // waits for clamped random amount of time
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
             SpawnBomb();
 

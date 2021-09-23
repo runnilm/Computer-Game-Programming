@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// EVERYTHING IN THIS CLASS IS ESSENTIALLY THE SAME FUNCTIONALLY AS ABILITY_BOOST.CS, I AM ONLY COMMENTING BIG DIFFERENCES
 public class Ability_Permeability : MonoBehaviour {
 
     [Header("Perm Main Parameters")]
@@ -38,8 +39,6 @@ public class Ability_Permeability : MonoBehaviour {
     private CanvasGroup permOffCDCG;
 
     void Start() {
-        StartCoroutine(EOFReset());
-
         permProgressUI = GameObject.Find("PermBar").GetComponent<Image>();
         permCDRadial = GameObject.Find("PermTimer").GetComponent<Image>();
         permCDText = GameObject.Find("PermCD").GetComponent<TextMeshProUGUI>();
@@ -65,6 +64,7 @@ public class Ability_Permeability : MonoBehaviour {
             Perm();
             refillTimer = 0.0f;
         } else {
+            // if player isn't using permeability, their sprite has no transparency and the basket collider is active (they can be hit)
             this.GetComponent<EdgeCollider2D>().enabled = true;
             this.GetComponent<SpriteRenderer>().color = noTransparency;
         }
@@ -131,8 +131,10 @@ public class Ability_Permeability : MonoBehaviour {
                 isPerm = true;
                 usedPerm += Time.deltaTime;
 
+                // while using permeability, the player cannot get hit by bombs (but CAN grab eggs still)
                 Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), bombColPrefab.GetComponent<Collider2D>());
 
+                // lower the player sprite's transparency by half while using ability
                 this.GetComponent<SpriteRenderer>().color = transparency;
             } else {
                 isPerm = false;
@@ -160,14 +162,5 @@ public class Ability_Permeability : MonoBehaviour {
             yield return null;
         }
         isRefilling = false;
-    }
-
-    private IEnumerator EOFReset() {
-        while (true) {
-            yield return new WaitForEndOfFrame();
-            if (Input.GetKey(KeyCode.Space)) {
-                transform.hasChanged = false;
-            }
-        }
     }
 }
